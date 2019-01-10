@@ -13,7 +13,7 @@ using namespace std;
 typedef class simple::iClass*(*newIClass)(void);
 typedef double(*fnx)(double, double);
 int main() {
-	if (!dynamicLoad::load(L"C:\\Users\\UltraDevUser\\source\\repos\\dllStudies\\BuildOutput\\Debug\\lib\\simpleDLL.dll"))
+	if (!dynamicLoad::load(L"C:\\Users\\UltraDevUser\\source\\repos\\joeWerly\\dllStudies\\BuildOutput\\Debug\\simpleDLL.dll"))
 		throw 1;
 	{
 		fnx f;
