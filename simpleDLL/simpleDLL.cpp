@@ -7,7 +7,6 @@ namespace simple {
 	extern "C" jApiSimple simple::iClass* create() {
 		return new simple::iClass();
 	}
-	
 	iClass::iClass() {}
 	iClass::~iClass() {}
 	int iClass::value() {

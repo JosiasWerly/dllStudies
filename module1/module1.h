@@ -1,9 +1,12 @@
 #pragma once
-#ifdef jApi
-#include "..\AbstractDLL\AbstractDLL.h"
-#endif // !jApi
+#ifdef codingModule
+	#include "..\AbstractDLL\AbstractDLL.h"
+	#define jMod __declspec(dllexport)
+#else
+	#define jMod __declspec(dllimport)
+#endif // !codingModule
 namespace core {
-	class jApi module1 :
+	class jMod module1 :
 		public iModule {
 	public:
 		module1();
@@ -11,5 +14,8 @@ namespace core {
 
 		double execute(const double a, const double b);
 		string name();
+	};
+	namespace allocators{		
+		extern "C" jMod core::iModule* newModule1();
 	};
 };

@@ -2,18 +2,26 @@
 #include <windows.h>
 #include <iostream>
 #include <tchar.h>
+#include <list>
 using namespace std;
+
 class dynamicLoad {
 public:
-	static HINSTANCE instance;
-	static bool load(const wchar_t *path);
-	template<class T> static bool getProc(const char* data, T &fnx) {
-		T p = nullptr;
-		p = (T)GetProcAddress(dynamicLoad::instance, data);
-		if (p) {
-			fnx = p;
-			return true;
+	class dynamicLibrary {
+	public:
+		const char *name;
+		const HINSTANCE instance;
+		dynamicLibrary(const char *name, const HINSTANCE instance):
+			name(name),
+			instance(instance){
 		}
-		return false;
-	}
+		template<class T> static T getProc(const char* data) {
+			T p = nullptr;
+			p = (T)GetProcAddress(dynamicLoad::instance, data);
+			return p;
+		}
+	};
+public:
+	static list<dynamicLibrary*>* DynamicLibraries;
+	static bool load(const wchar_t *path, const wchar_t *name);
 };
