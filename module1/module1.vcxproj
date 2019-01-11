@@ -70,16 +70,16 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)\BuildOutput\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)\BuildOutput\$(Configuration)\$(PlatformName)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)\BuildOutput\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)\BuildOutput\$(Configuration)\$(PlatformName)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)\BuildOutput\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)\BuildOutput\$(Configuration)\$(PlatformName)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)\BuildOutput\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)\BuildOutput\$(Configuration)\$(PlatformName)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -88,14 +88,14 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <PreprocessorDefinitions>codingModule;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)\BuildOutput\$(Configuration)\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\BuildOutput\include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)\BuildOutput\$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\BuildOutput\$(Configuration)\$(PlatformName)\</AdditionalLibraryDirectories>
       <AdditionalDependencies>AbstractDLL.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>copy /Y "$(ProjectDir)$(ProjectName).h" "$(SolutionDir)BuildOutput\$(Configuration)\include\$(ProjectName).h"</Command>
+      <Command>copy /Y "$(ProjectDir)$(ProjectName).h" "$(SolutionDir)BuildOutput\include\$(ProjectName).h"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -105,14 +105,14 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <PreprocessorDefinitions>codingModule;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)\BuildOutput\$(Configuration)\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\BuildOutput\include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)\BuildOutput\$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\BuildOutput\$(Configuration)\$(PlatformName)\</AdditionalLibraryDirectories>
       <AdditionalDependencies>AbstractDLL.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>copy /Y "$(ProjectDir)$(ProjectName).h" "$(SolutionDir)BuildOutput\$(Configuration)\include\$(ProjectName).h"</Command>
+      <Command>copy /Y "$(ProjectDir)$(ProjectName).h" "$(SolutionDir)BuildOutput\include\$(ProjectName).h"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -124,16 +124,16 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <PreprocessorDefinitions>codingModule;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)\BuildOutput\$(Configuration)\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\BuildOutput\include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)\BuildOutput\$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\BuildOutput\$(Configuration)\$(PlatformName)\</AdditionalLibraryDirectories>
       <AdditionalDependencies>AbstractDLL.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>copy /Y "$(ProjectDir)$(ProjectName).h" "$(SolutionDir)BuildOutput\$(Configuration)\include\$(ProjectName).h"</Command>
+      <Command>copy /Y "$(ProjectDir)$(ProjectName).h" "$(SolutionDir)BuildOutput\include\$(ProjectName).h"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -145,16 +145,16 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <PreprocessorDefinitions>codingModule;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)\BuildOutput\$(Configuration)\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\BuildOutput\include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)\BuildOutput\$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\BuildOutput\$(Configuration)\$(PlatformName)\</AdditionalLibraryDirectories>
       <AdditionalDependencies>AbstractDLL.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>copy /Y "$(ProjectDir)$(ProjectName).h" "$(SolutionDir)BuildOutput\$(Configuration)\include\$(ProjectName).h"</Command>
+      <Command>copy /Y "$(ProjectDir)$(ProjectName).h" "$(SolutionDir)BuildOutput\include\$(ProjectName).h"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
