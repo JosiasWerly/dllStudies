@@ -16,6 +16,6 @@ namespace core {
 		string name();
 	};
 	namespace allocators {
-		extern "C" jMod core::iModule* newModule1();
+		extern "C" jMod core::iModule* newModule2();
 	};
 };

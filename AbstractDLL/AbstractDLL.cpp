@@ -4,7 +4,6 @@ namespace core {
 	}
 	iModule::~iModule() {
 	}
-
 	void iModule::Destroy() {
 		delete this;
 	}

@@ -19,7 +19,7 @@ namespace core {
 		virtual double execute(const double a, const double b) = 0;
 	};
 	namespace allocators {
-		typedef iModule*(*newModule)(void);
+		typedef iModule*(*factoryModule)(void);
 	};
 };
 #endif // !abstractDll
