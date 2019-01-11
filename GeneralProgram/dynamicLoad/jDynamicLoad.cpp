@@ -5,7 +5,7 @@
 using namespace std;
 list<jDll*> dynamicLoad::DynamicLibraries = list<jDll*>();
 
-bool dynamicLoad::load(wstring path, wstring name) {	
+void dynamicLoad::load(wstring path, wstring name) {	
 	wstring strg;
 	strg = path;
 	strg += name;
@@ -21,7 +21,6 @@ bool dynamicLoad::load(wstring path, wstring name) {
 		return stgName;
 	};
 	dynamicLoad::DynamicLibraries.emplace_back(new jDll(converter(name), instance));
-	return true;
 }
 jDll* dynamicLoad::at(string name) {
 	for (list<jDll*>::iterator i = DynamicLibraries.begin(); i != DynamicLibraries.end(); i++){

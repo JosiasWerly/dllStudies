@@ -1,17 +1,19 @@
+
+
+//Select what type you would test
+//#define dynamicLoad
+#ifdef dynamicLoad
 #include "dynamicLoad/jDynamicLoad.h"
 #include "AbstractDLL.h"
 #include "module1.h"
 #include "module2.h"
-
 #include <windows.h>
 #include <tchar.h>
 #include <iostream>
 
 
 
-
 using namespace std;
-
 using namespace core;
 using namespace core::allocators;
 int main() {
@@ -23,53 +25,41 @@ int main() {
 	core::allocators::factoryModule
 		m1 = jDllNewMod1->getFunc<factoryModule>("newModule1"),
 		m2 = jDllNewMod2->getFunc<factoryModule>("newModule2");
-	iModule 
+	iModule
 		*mod1 = m1(),
 		*mod2 = m2();
 
 	cout << mod1->name() << endl;
 	cout << mod2->name() << endl;
-	
-	
-	
-	//core::allocators::newModule nMod1 = d->getFunc<core::allocators::newModule>("newModule1");
-	//core::iModule *mod = nMod1();
-	//cout << mod->name() << endl;
-	//core::allocators::newModule a = dynamicLoad::getProc<core::allocators::newModule>("createModule1");
-	//core::iModule *q = a();
-	//q->name();
-	
 	return 0;
 }
+#else
+#include "dynamicLoad/jDynamicLoad.h"
+#include "simpleDLL.h"
+#include <windows.h>
+#include <tchar.h>
+#include <iostream>
+using namespace std;
+
+typedef class simple::iClass*(*newIClassFnx)(void);
+typedef double(*fnx)(double, double);
+int main() {
+	dynamicLoad::load(L"C:\\Users\\UltraDevUser\\source\\repos\\joeWerly\\dllStudies\\BuildOutput\\Debug\\", L"simpleDLL.dll");
+	jDll *dl = dynamicLoad::at("simpleDLL.dll");
+
+	fnx addFnx = dl->getFunc<fnx>("add");
+	newIClassFnx newIClass = dl->getFunc<newIClassFnx>("createiClass");	
+	simple::iClass *j = newIClass();
+	
+	cout << j->value() << endl;
+	cout << addFnx(10, 20);
+	return 0;
+}
+#endif // dynamicLoad
 
 
 
 
-////////////Simple Test////////////////
-//#include "dynamicLoad/jDynamicLoad.h"
-//#include "simpleDLL.h"
-////#include "AbstractDLL.h"
-////#include "module1.h"
-////#include "module2.h"
-//
-//#include <windows.h>
-//#include <tchar.h>
-//
-//#include <iostream>
-//using namespace std;
-//
-//typedef class simple::iClass*(*newIClass)(void);
-//typedef double(*fnx)(double, double);
-//int main() {
-//	if (!dynamicLoad::load(L"C:\\Users\\UltraDevUser\\source\\repos\\joeWerly\\dllStudies\\BuildOutput\\Debug\\AbstractDLL.dll"))
-//		throw 1;
-//	{
-//		fnx f = dynamicLoad::getProc<fnx>("add");
-//		if (f(10, 5) != 15)
-//			throw 1;
-//	}
-//	newIClass newiClass = dynamicLoad::getProc<newIClass>("create");
-//	simple::iClass *j = newiClass();
-//	cout << j->value();
-//	return 0;
-//}
+
+
+

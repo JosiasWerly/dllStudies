@@ -12,5 +12,5 @@ namespace simple{
 		virtual int value();
 	};
 	extern "C" jApiSimple double add(double a, double b);
-	extern "C" jApiSimple simple::iClass* create();
+	extern "C" jApiSimple simple::iClass* createiClass();
 };

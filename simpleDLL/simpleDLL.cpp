@@ -4,7 +4,7 @@ namespace simple {
 	extern "C" jApiSimple double add(double a, double b) {
 		return a + b;
 	}
-	extern "C" jApiSimple simple::iClass* create() {
+	extern "C" jApiSimple simple::iClass* createiClass() {
 		return new simple::iClass();
 	}
 	iClass::iClass() {}

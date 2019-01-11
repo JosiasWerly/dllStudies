@@ -23,6 +23,6 @@ public:
 class dynamicLoad {
 public:
 	static list<jDll*> DynamicLibraries;
-	static bool load(wstring path, wstring name);
+	static void load(wstring path, wstring name);
 	static jDll* at(string name);
 };
