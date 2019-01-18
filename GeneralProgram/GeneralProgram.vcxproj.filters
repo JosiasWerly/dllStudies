@@ -15,5 +15,6 @@
     <ClInclude Include="dynamicLoad\jDynamicLoad.h">
       <Filter>dynamicLoad</Filter>
     </ClInclude>
+    <ClInclude Include="Activator.h" />
   </ItemGroup>
 </Project>

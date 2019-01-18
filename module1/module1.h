@@ -12,7 +12,7 @@ namespace core {
 		module1();
 		virtual ~module1();
 
-		double execute(const double a, const double b);
+		double execute();
 		string name();
 	};
 	namespace allocators{		

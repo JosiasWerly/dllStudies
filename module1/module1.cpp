@@ -8,9 +8,16 @@ namespace core{
 	string result = "module1";
 	return result;
 }
-	double module1::execute(const double a, const double b) {
-	return a-b;
-}
+	double module1::execute() {
+		vector<float> *v = activator->values;
+		if(v) {
+			for(size_t i = 0; i < v->size(); i++) {
+				v->at(i) += 1;
+			}
+			return 1;
+		}
+		return 0;
+	}
 
 	namespace allocators {
 		extern "C" jMod core::iModule* newModule1() {

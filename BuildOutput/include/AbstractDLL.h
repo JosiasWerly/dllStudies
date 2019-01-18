@@ -8,6 +8,8 @@
 #define jApi __declspec(dllimport)
 #endif
 #include <string>
+#include <vector>
+#include "Activator.h"
 using namespace std;
 namespace core {
 	class jApi iModule {
@@ -16,9 +18,10 @@ namespace core {
 		virtual ~iModule();
 		virtual void Destroy();
 		virtual string name() = 0;
-		virtual double execute(const double a, const double b) = 0;
+		virtual double execute() = 0;
 	};
 	namespace allocators {
+		extern "C" jApi void init(Global::Activator *activator);
 		typedef iModule*(*factoryModule)(void);
 	};
 };

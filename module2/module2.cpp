@@ -5,11 +5,18 @@ namespace core {
 	module2::~module2() {
 	}
 	string module2::name() {
-		string result = "module2";
+		string result = "sum";
 		return result;
 	}
-	double module2::execute(const double a, const double b) {
-		return a - b;
+	double module2::execute() {		
+		vector<float> *v = globalValue->values;
+		if(v) {
+			for(size_t i = 0; i < v->size(); i++) {
+				v->emplace_back(v->at(i));
+			}
+			return 1;
+		}		
+		return 0;
 	}
 
 	namespace allocators {
