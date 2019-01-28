@@ -11,7 +11,7 @@ namespace core {
 	double module2::execute() {		
 		vector<float> *v = Global::activator->values;
 		if(v) {
-			for(size_t i = 0; i < v->size(); i++) {
+			for(size_t i = 0; i < 10; i++) {
 				v->emplace_back(v->at(i));
 			}
 			return 1;

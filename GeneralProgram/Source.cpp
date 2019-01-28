@@ -38,9 +38,15 @@ int main() {
 		m1 = jDllNewMod1->getFunc<jFactoryModule>("newModule1"),
 		m2 = jDllNewMod2->getFunc<jFactoryModule>("newModule2");
 
-	core::allocators::jInit
-		initm1 = jDllAbstract->getFunc<jInit>("init"),
-		initm2 = jDllNewMod1->getFunc<jInit>("init");
+	core::allocators::jFnxActivator
+		dllAbs = jDllAbstract->getFunc<jFnxActivator>("tick"),
+		initm1 = jDllNewMod1->getFunc<jFnxActivator>("tick"),
+		initm2 = jDllNewMod2->getFunc<jFnxActivator>("tick");
+
+	dllAbs(Global::activator);
+	initm1(Global::activator);
+	initm2(Global::activator);
+
 
 	iModule
 		*mod1 = m1(),

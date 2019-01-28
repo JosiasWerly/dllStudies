@@ -13,7 +13,7 @@ namespace core{
 		vector<float> *v = Global::activator->values;
 		if(v) {
 			for(size_t i = 0; i < v->size(); i++) {
-				v->at(i) += 1;
+				v->at(i) += v->at(i);
 			}
 			return 1;
 		}

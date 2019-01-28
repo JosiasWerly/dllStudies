@@ -5,7 +5,6 @@
 #ifdef jCoding
 	#define jApi __declspec(dllexport)
 	#include "Activator.h"
-	static Global::Activator *ptr = nullptr;
 #else
 	#define jApi __declspec(dllimport)
 #endif
@@ -15,15 +14,6 @@
 
 using namespace std;
 namespace core {
-	class jApi Persistence {
-	public:
-		Persistence();
-		~Persistence();
-
-		void init();
-		void shutdown();
-		void tick(Global::Activator *ptr);
-	};
 	class jApi iModule {
 	public:
 		iModule();
@@ -34,8 +24,10 @@ namespace core {
 	};
 	namespace allocators {
 		typedef iModule*(*jFactoryModule)(void);
-		typedef void(*jInit)(Global::Activator *activator);
-		//extern "C" jApi void init(Global::Activator *activator);
+		typedef void(*jFnxActivator)(Global::Activator *activator);
+		extern "C" __declspec(dllexport) void tick(Global::Activator *activator) {
+			Global::activator = activator;
+		}
 	};
 };
 #endif // !abstractDll
