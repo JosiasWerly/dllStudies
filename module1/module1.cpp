@@ -1,4 +1,5 @@
 #include "module1.h"
+#include "Activator.h"
 namespace core{
 	module1::module1() {
 }
@@ -9,7 +10,7 @@ namespace core{
 	return result;
 }
 	double module1::execute() {
-		vector<float> *v = activator->values;
+		vector<float> *v = Global::activator->values;
 		if(v) {
 			for(size_t i = 0; i < v->size(); i++) {
 				v->at(i) += 1;
@@ -23,5 +24,8 @@ namespace core{
 		extern "C" jMod core::iModule* newModule1() {
 			return new module1();
 		}
+		/*extern "C" jApi void init(Global::Activator *activator) {
+			Global::activator = activator;
+		}*/
 	};	
 };

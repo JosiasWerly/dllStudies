@@ -20,19 +20,31 @@ using namespace core;
 using namespace core::allocators;
 
 int main() {
+	Global::activator = new Global::Activator();
+	Global::activator->values = new vector<float>();
+	for(size_t i = 0; i < 10; i++){
+		Global::activator->values->emplace_back(i);
+	}
+	
+	dynamicLoad::load(L"C:\\Users\\UltraDevUser\\source\\repos\\joeWerly\\dllStudies\\BuildOutput\\Debug\\Win32\\", L"AbstractDLL.dll");
 	dynamicLoad::load(L"C:\\Users\\UltraDevUser\\source\\repos\\joeWerly\\dllStudies\\BuildOutput\\Debug\\Win32\\", L"module1.dll");
 	dynamicLoad::load(L"C:\\Users\\UltraDevUser\\source\\repos\\joeWerly\\dllStudies\\BuildOutput\\Debug\\Win32\\", L"module2.dll");
 	jDll
+		*jDllAbstract = dynamicLoad::at("AbstractDLL.dll"),
 		*jDllNewMod1 = dynamicLoad::at("module1.dll"),
 		*jDllNewMod2 = dynamicLoad::at("module2.dll");
-	core::allocators::factoryModule
-		m1 = jDllNewMod1->getFunc<factoryModule>("newModule1"),
-		m2 = jDllNewMod2->getFunc<factoryModule>("newModule2");
+	
+	core::allocators::jFactoryModule
+		m1 = jDllNewMod1->getFunc<jFactoryModule>("newModule1"),
+		m2 = jDllNewMod2->getFunc<jFactoryModule>("newModule2");
+
+	core::allocators::jInit
+		initm1 = jDllAbstract->getFunc<jInit>("init"),
+		initm2 = jDllNewMod1->getFunc<jInit>("init");
 
 	iModule
 		*mod1 = m1(),
 		*mod2 = m2();
-	
 	double r;
 	r = mod1->execute();
 	r = mod2->execute();
@@ -64,6 +76,7 @@ int main() {
 	return 0;
 }
 #endif // dynamicLoad
+
 
 
 

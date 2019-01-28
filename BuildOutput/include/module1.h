@@ -1,7 +1,8 @@
 #pragma once
 #ifdef codingModule
-	#include "..\AbstractDLL\AbstractDLL.h"
 	#define jMod __declspec(dllexport)
+	#include "Activator.h"
+	#include "AbstractDLL.h"
 #else
 	#define jMod __declspec(dllimport)
 #endif // !codingModule
@@ -11,7 +12,6 @@ namespace core {
 	public:
 		module1();
 		virtual ~module1();
-
 		double execute();
 		string name();
 	};

@@ -9,7 +9,7 @@ namespace core {
 		return result;
 	}
 	double module2::execute() {		
-		vector<float> *v = globalValue->values;
+		vector<float> *v = Global::activator->values;
 		if(v) {
 			for(size_t i = 0; i < v->size(); i++) {
 				v->emplace_back(v->at(i));

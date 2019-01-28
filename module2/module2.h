@@ -1,6 +1,7 @@
 #pragma once
 #ifdef codingModule
-#include "..\AbstractDLL\AbstractDLL.h"
+#include "Activator.h"
+#include "AbstractDLL.h"	
 #define jMod __declspec(dllexport)
 #else
 #define jMod __declspec(dllimport)

@@ -2,16 +2,28 @@
 #ifndef abstractDll
 #define abstractDll
 
-#ifdef jApi
-#define jApi __declspec(dllexport)
+#ifdef jCoding
+	#define jApi __declspec(dllexport)
+	#include "Activator.h"
+	static Global::Activator *ptr = nullptr;
 #else
-#define jApi __declspec(dllimport)
+	#define jApi __declspec(dllimport)
 #endif
+
 #include <string>
 #include <vector>
-#include "Activator.h"
+
 using namespace std;
 namespace core {
+	class jApi Persistence {
+	public:
+		Persistence();
+		~Persistence();
+
+		void init();
+		void shutdown();
+		void tick(Global::Activator *ptr);
+	};
 	class jApi iModule {
 	public:
 		iModule();
@@ -21,8 +33,9 @@ namespace core {
 		virtual double execute() = 0;
 	};
 	namespace allocators {
-		extern "C" jApi void init(Global::Activator *activator);
-		typedef iModule*(*factoryModule)(void);
+		typedef iModule*(*jFactoryModule)(void);
+		typedef void(*jInit)(Global::Activator *activator);
+		//extern "C" jApi void init(Global::Activator *activator);
 	};
 };
 #endif // !abstractDll
