@@ -1,14 +1,12 @@
 #include "module1.h"
 #include "Activator.h"
-namespace core{
-	module1::module1() {
-}
-	module1::~module1() {
-}
+namespace core {
+	module1::module1() {}
+	module1::~module1() {}
 	string module1::name() {
-	string result = "module1";
-	return result;
-}
+		string result = "module1";
+		return result;
+	}
 	double module1::execute() {
 		vector<float> *v = Global::activator->values;
 		if(v) {
@@ -27,5 +25,5 @@ namespace core{
 		/*extern "C" jApi void init(Global::Activator *activator) {
 			Global::activator = activator;
 		}*/
-	};	
+	};
 };

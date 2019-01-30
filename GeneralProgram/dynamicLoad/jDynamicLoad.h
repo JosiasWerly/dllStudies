@@ -5,7 +5,6 @@
 #include <list>
 using namespace std;
 
-
 class jDll {
 public:
 	string name;
